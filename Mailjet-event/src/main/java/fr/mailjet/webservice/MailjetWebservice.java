@@ -48,7 +48,6 @@ public class MailjetWebservice {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response mailjet(String parEventContent) {
 		// TODO : do action here
-		System.out.println(parEventContent);
 		// On retourne un code 200
 		return Response.ok().build();
 	}
