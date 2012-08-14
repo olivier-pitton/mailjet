@@ -22,7 +22,6 @@ package fr.mailjet.rest.impl;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.fail;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -55,49 +54,49 @@ public class ListsRESTServiceTest extends AbstractServiceTestBase {
 	public ListsRESTServiceTest(EnumReturnType parType) {
 		super(parType);
 
-		_service = new RESTServiceFactory(_context).createListsService();
+		_service = new RESTServiceFactory(this._context).createListsService();
 	}
 
 	@Test(timeout = 1000L)
 	public void testGetContext() {
-		assertEquals(_context, _service.getContext());
+		assertEquals(this._context, _service.getContext());
 	}
 
 	@Test(timeout = 1000L)
 	public void testSetContext() {
 		_service.setContext(new MailjetContext("test", "test"));
-		assertFalse(_service.getContext().equals(_context));
-		_service.setContext(_context);
+		assertFalse(_service.getContext().equals(this._context));
+		_service.setContext(this._context);
 	}
 
 	@Test(timeout = 15000L)
 	public void testAllEnumReturnType() {
-		String locResult = _service.all(_type);
-		checkStatus(locResult);
+		String locResult = _service.all(this._type);
+		this.checkStatus(locResult);
 	}
 
 	@Test(timeout = 15000L)
 	public void testAllEnumReturnTypeInteger() {
-		String locResult = _service.all(_type, Integer.valueOf(1));
-		checkStatus(locResult);
+		String locResult = _service.all(this._type, Integer.valueOf(1));
+		this.checkStatus(locResult);
 	}
 
 	@Test(timeout = 15000L)
 	public void testAllEnumReturnTypeIntegerString() {
-		String locResult = _service.all(_type, Integer.valueOf(1), "ASC");
-		checkStatus(locResult);
+		String locResult = _service.all(this._type, Integer.valueOf(1), "ASC");
+		this.checkStatus(locResult);
 	}
 
 	@Test(timeout = 15000L)
 	public void testAllEnumReturnTypeIntegerStringInteger() {
-		String locResult = _service.all(_type, Integer.valueOf(1), "DESC", Integer.valueOf(0));
-		checkStatus(locResult);
+		String locResult = _service.all(this._type, Integer.valueOf(1), "DESC", Integer.valueOf(0));
+		this.checkStatus(locResult);
 	}
 
 	@Test(timeout = 15000L)
 	public void testContactsEnumReturnTypeInteger() {
-		String locResult = _service.contacts(_type, LIST_ID);
-		checkStatus(locResult);
+		String locResult = _service.contacts(this._type, this.LIST_ID);
+		this.checkStatus(locResult);
 	}
 
 	@Test(timeout = 15000L)
@@ -107,9 +106,9 @@ public class ListsRESTServiceTest extends AbstractServiceTestBase {
 		locParameters.put("limit", locBlockedAndLimitParameter);
 		locParameters.put("order_by", "ASC");
 		locParameters.put("start", Integer.valueOf(0).toString());
-		String locResult = _service.contacts(_type, LIST_ID, locParameters);
-		checkStatus(locResult);
-		checkMinimumIntegerParameter(locResult, "total_cnt", Integer.valueOf(1));
+		String locResult = _service.contacts(this._type, this.LIST_ID, locParameters);
+		this.checkStatus(locResult);
+		this.checkMinimumIntegerParameter(locResult, "total_cnt", Integer.valueOf(1));
 	}
 
 	@Test(timeout = 3000L, expected = IllegalArgumentException.class)
@@ -119,82 +118,82 @@ public class ListsRESTServiceTest extends AbstractServiceTestBase {
 		locParameters.put("limit", locBlockedAndLimitParameter);
 		locParameters.put("order_by", "ASC");
 		locParameters.put("start", Integer.valueOf(0).toString());
-		_service.contacts(_type, null, locParameters);
+		_service.contacts(this._type, null, locParameters);
 	}
 
 	@Test(timeout = 15000L)
 	public void testEmail() {
-		_logger.warning("Not tested because of 204 no content");
+		this._logger.warning("Not tested because of 204 no content");
 	}
 
 	@Test(timeout = 3000L, expected = IllegalArgumentException.class)
 	public void testEmailIllegalArgumentException() {
-		_service.email(_type, null);
+		_service.email(this._type, null);
 	}
 
 	@Test(timeout = 15000L)
 	public void testStatistics() {
-		_logger.warning("Not tested because of 204 no content");
+		this._logger.warning("Not tested because of 204 no content");
 	}
 
 	@Test(timeout = 3000L, expected = IllegalArgumentException.class)
 	public void testStatisticsIllegalArgumentException() {
-		_service.statistics(_type, null);
+		_service.statistics(this._type, null);
 	}
 
 	@Test(timeout = 15000L)
 	public void testAddContactEnumReturnTypeIntegerString() {
-		_logger.warning("Not tested because need a premium account");
+		this._logger.warning("Not tested because need a premium account");
 	}
 
 	@Test(timeout = 15000L)
 	public void testAddContactEnumReturnTypeIntegerStringBoolean() {
-		_logger.warning("Not tested because need a premium account");
+		this._logger.warning("Not tested because need a premium account");
 	}
 
 	@Test(timeout = 15000L)
 	public void testAddManyContactsEnumReturnTypeIntegerListOfString() {
-		_logger.warning("Not tested because need a premium account");
+		this._logger.warning("Not tested because need a premium account");
 	}
 
 	@Test(timeout = 15000L)
 	public void testAddManyContactsEnumReturnTypeIntegerListOfStringBoolean() {
-		_logger.warning("Not tested because need a premium account");
+		this._logger.warning("Not tested because need a premium account");
 	}
 
 	@Test(timeout = 15000L)
 	public void testCreate() {
-		_logger.warning("Not tested because need a premium account");
+		this._logger.warning("Not tested because need a premium account");
 	}
 
 	@Test(timeout = 15000L)
 	public void testDelete() {
-		_logger.warning("Not tested because need a premium account");
+		this._logger.warning("Not tested because need a premium account");
 	}
 
 	@Test(timeout = 15000L)
 	public void testRemoveContact() {
-		_logger.warning("Not tested because need a premium account");
+		this._logger.warning("Not tested because need a premium account");
 	}
 
 	@Test(timeout = 15000L)
 	public void testRemoveManyContacts() {
-		_logger.warning("Not tested because need a premium account");
+		this._logger.warning("Not tested because need a premium account");
 	}
 
 	@Test(timeout = 15000L)
 	public void testUnsubContact() {
-		_logger.warning("Not tested because need a premium account");
+		this._logger.warning("Not tested because need a premium account");
 	}
 
 	@Test(timeout = 15000L)
 	public void testUpdateEnumReturnTypeIntegerString() {
-		_logger.warning("Not tested because need a premium account");
+		this._logger.warning("Not tested because need a premium account");
 	}
 
 	@Test(timeout = 15000L)
 	public void testUpdateEnumReturnTypeIntegerStringString() {
-		_logger.warning("Not tested because need a premium account");
+		this._logger.warning("Not tested because need a premium account");
 	}
 
 }

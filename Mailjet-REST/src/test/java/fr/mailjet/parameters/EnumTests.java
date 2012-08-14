@@ -1,4 +1,5 @@
 package fr.mailjet.parameters;
+
 /*
  * 
  * Mailjet
@@ -41,58 +42,62 @@ import fr.mailjet.util.IWithConstName;
 
 /**
  * Tests unitaires des énumérations de paramètres
+ * 
  * @author Pitton Olivier
- *
+ * 
  */
 @RunWith(Parameterized.class)
 public class EnumTests {
 
 	/**
 	 * Retourne la {@link List} de tous les paramètres à tester.
+	 * 
 	 * @see Parameterized
 	 * @return {@link List} la liste de tous les paramètres à tester
 	 */
 	@Parameters
 	static final public Collection<Object[]> parameters() {
 		List<Object[]> locParameters = new ArrayList<Object[]>();
-		locParameters.add(new Object[]{EnumMailjetMailHeader.values()});
-		locParameters.add(new Object[]{EnumReturnType.values()});
-		locParameters.add(new Object[]{EnumCustomStatus.values()});
+		locParameters.add(new Object[] { EnumMailjetMailHeader.values() });
+		locParameters.add(new Object[] { EnumReturnType.values() });
+		locParameters.add(new Object[] { EnumCustomStatus.values() });
 		return locParameters;
 	}
 
 	private IWithConstName[] _enum;
-	
+
 	/**
 	 * Constructeur utilisé avec {@link Parameters}
-	 * @param parEnumArray {@link IWithConstName} le tableau d'enum
+	 * 
+	 * @param parEnumArray
+	 *          {@link IWithConstName} le tableau d'enum
 	 */
 	public EnumTests(IWithConstName[] parEnumArray) {
-		_enum = parEnumArray;
-		assertNotNull(_enum);
+		this._enum = parEnumArray;
+		assertNotNull(this._enum);
 		assertTrue(parEnumArray.length > 0);
 		assertTrue(parEnumArray[0] instanceof Enum);
 	}
-	
+
 	/**
 	 * Vérifie que toutes les clés sont uniques pour une énumération
 	 */
 	@Test(timeout = 3000L)
 	public void testUniqueGetValue() {
-		Set<String> locUniqueSet = new HashSet<String>(_enum.length);
-		for(IWithConstName locEnumValue : _enum) {
-			assertTrue(" L'élément " + locEnumValue.getConstName() + " est déjà présent dans l'énumération " + locEnumValue.getClass() + ".",locUniqueSet.add(locEnumValue.getConstName()));
+		Set<String> locUniqueSet = new HashSet<String>(this._enum.length);
+		for (IWithConstName locEnumValue : this._enum) {
+			assertTrue(" L'élément " + locEnumValue.getConstName() + " est déjà présent dans l'énumération " + locEnumValue.getClass() + ".", locUniqueSet.add(locEnumValue.getConstName()));
 		}
 		locUniqueSet.clear();
 	}
-	
+
 	/**
-	 * Vérifie que le {@link Object#toString()} de l'enum est
-	 * identique à sa méthode {@link IWithConstName#getConstName()}
+	 * Vérifie que le {@link Object#toString()} de l'enum est identique à sa
+	 * méthode {@link IWithConstName#getConstName()}
 	 */
 	@Test(timeout = 3000L)
 	public void testIdenticalValueToString() {
-		for(IWithConstName locEnumValue : _enum) {
+		for (IWithConstName locEnumValue : this._enum) {
 			assertEquals(locEnumValue.getConstName(), locEnumValue.toString());
 		}
 	}

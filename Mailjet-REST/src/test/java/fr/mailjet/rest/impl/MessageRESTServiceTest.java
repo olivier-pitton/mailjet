@@ -54,19 +54,19 @@ public class MessageRESTServiceTest extends AbstractServiceTestBase {
 
 	public MessageRESTServiceTest(EnumReturnType parType) {
 		super(parType);
-		_service = new RESTServiceFactory(_context).createMessageService();
+		_service = new RESTServiceFactory(this._context).createMessageService();
 	}
 
 	@Test(timeout = 1000L)
 	public void testGetContext() {
-		assertEquals(_context, _service.getContext());
+		assertEquals(this._context, _service.getContext());
 	}
 
 	@Test(timeout = 1000L)
 	public void testSetContext() {
 		_service.setContext(new MailjetContext("test", "test"));
-		assertFalse(_service.getContext().equals(_context));
-		_service.setContext(_context);
+		assertFalse(_service.getContext().equals(this._context));
+		_service.setContext(this._context);
 	}
 
 	@Test(timeout = 10000L)
@@ -74,16 +74,16 @@ public class MessageRESTServiceTest extends AbstractServiceTestBase {
 		// Les paramètres spécifiques ne sont pas testés car dépendant de
 		// l'utilisateur, on considère que le status
 		// vérifie correctement le bon niveau du test.
-		String locResult = _service.campaigns(_type);
-		checkStatus(locResult);
+		String locResult = _service.campaigns(this._type);
+		this.checkStatus(locResult);
 	}
 
 	@Test(timeout = 10000L)
 	public void testCampaignsEnumReturnTypeInteger() {
 		Integer locCount = Integer.valueOf(1);
-		String locResult = _service.campaigns(_type, locCount);
-		checkStatus(locResult);
-		checkParameter(locResult, "cnt", "1");
+		String locResult = _service.campaigns(this._type, locCount);
+		this.checkStatus(locResult);
+		this.checkParameter(locResult, "cnt", "1");
 	}
 
 	@Test(timeout = 10000L)
@@ -91,16 +91,16 @@ public class MessageRESTServiceTest extends AbstractServiceTestBase {
 		Map<String, String> locParameters = new HashMap<String, String>();
 		locParameters.put("limit", "1");
 		locParameters.put("order_by", "DESC");
-		String locResult = _service.campaigns(_type, locParameters);
-		checkStatus(locResult);
-		checkParameter(locResult, "cnt", "1");
+		String locResult = _service.campaigns(this._type, locParameters);
+		this.checkStatus(locResult);
+		this.checkParameter(locResult, "cnt", "1");
 	}
 
 	@Test(timeout = 10000L)
 	public void testContactsEnumReturnTypeInteger() {
-		String locResult = _service.contacts(_type, STATS_CAMPAIGN_ID);
-		checkStatus(locResult);
-		checkMinimumIntegerParameter(locResult, "total_cnt", Integer.valueOf(1));
+		String locResult = _service.contacts(this._type, this.STATS_CAMPAIGN_ID);
+		this.checkStatus(locResult);
+		this.checkMinimumIntegerParameter(locResult, "total_cnt", Integer.valueOf(1));
 	}
 
 	@Test(timeout = 10000L)
@@ -108,68 +108,68 @@ public class MessageRESTServiceTest extends AbstractServiceTestBase {
 		Map<String, String> locParameters = new HashMap<String, String>();
 		locParameters.put("limit", "1");
 		locParameters.put("order_by", "DESC");
-		String locResult = _service.contacts(_type, STATS_CAMPAIGN_ID, locParameters);
-		checkStatus(locResult);
-		checkMinimumIntegerParameter(locResult, "total_cnt", Integer.valueOf(1));
+		String locResult = _service.contacts(this._type, this.STATS_CAMPAIGN_ID, locParameters);
+		this.checkStatus(locResult);
+		this.checkMinimumIntegerParameter(locResult, "total_cnt", Integer.valueOf(1));
 	}
 
 	@Test(timeout = 10000L)
 	public void testHtmlCampaign() {
-		String locResult = _service.htmlCampaign(_type, CAMPAIGN_ID);
-		checkStatus(locResult);
+		String locResult = _service.htmlCampaign(this._type, this.CAMPAIGN_ID);
+		this.checkStatus(locResult);
 	}
 
 	@Test(timeout = 10000L)
 	public void testListEnumReturnType() {
-		String locResult = _service.list(_type);
-		checkStatus(locResult);
-		checkMinimumIntegerParameter(locResult, "total_cnt", Integer.valueOf(1));
+		String locResult = _service.list(this._type);
+		this.checkStatus(locResult);
+		this.checkMinimumIntegerParameter(locResult, "total_cnt", Integer.valueOf(1));
 	}
 
 	@Test(timeout = 10000L)
 	public void testListEnumReturnTypeEnumMapOfEnumMessageListParametersString() {
 		Map<String, String> locParameters = new HashMap<String, String>();
 		locParameters.put("limit", "1");
-		String locResult = _service.list(_type, locParameters);
-		checkStatus(locResult);
-		checkMinimumIntegerParameter(locResult, "total_cnt", Integer.valueOf(1));
+		String locResult = _service.list(this._type, locParameters);
+		this.checkStatus(locResult);
+		this.checkMinimumIntegerParameter(locResult, "total_cnt", Integer.valueOf(1));
 	}
 
 	@Test(timeout = 10000L)
 	public void testStatistics() {
-		String locResult = _service.statistics(_type, STATS_CAMPAIGN_ID);
-		checkStatus(locResult);
+		String locResult = _service.statistics(this._type, this.STATS_CAMPAIGN_ID);
+		this.checkStatus(locResult);
 	}
 
 	@Test(timeout = 10000L)
 	public void testTplCategories() {
-		String locResult = _service.tplCategories(_type);
-		checkStatus(locResult);
-		checkParameter(locResult, "label", "basic");
+		String locResult = _service.tplCategories(this._type);
+		this.checkStatus(locResult);
+		this.checkParameter(locResult, "label", "basic");
 	}
 
 	@Test(timeout = 10000L)
 	public void testTplModelsEnumReturnType() {
-		String locResult = _service.tplModels(_type);
-		checkStatus(locResult);
+		String locResult = _service.tplModels(this._type);
+		this.checkStatus(locResult);
 	}
 
 	@Test(timeout = 10000L)
 	public void testTplModelsEnumReturnTypeInteger() {
-		String locResult = _service.tplModels(_type, Integer.valueOf(1));
-		checkStatus(locResult);
+		String locResult = _service.tplModels(this._type, Integer.valueOf(1));
+		this.checkStatus(locResult);
 	}
 
 	@Test(timeout = 10000L)
 	public void testTplModelsEnumReturnTypeIntegerBoolean() {
-		String locResult = _service.tplModels(_type, Integer.valueOf(1), Boolean.FALSE);
-		checkStatus(locResult);
+		String locResult = _service.tplModels(this._type, Integer.valueOf(1), Boolean.FALSE);
+		this.checkStatus(locResult);
 	}
 
 	@Test(timeout = 10000L)
 	public void testTplModelsEnumReturnTypeLocale() {
-		String locResult = _service.tplModels(_type, Integer.valueOf(1), Boolean.FALSE, Locale.getDefault());
-		checkStatus(locResult);
+		String locResult = _service.tplModels(this._type, Integer.valueOf(1), Boolean.FALSE, Locale.getDefault());
+		this.checkStatus(locResult);
 	}
 
 	@Test(timeout = 10000L)

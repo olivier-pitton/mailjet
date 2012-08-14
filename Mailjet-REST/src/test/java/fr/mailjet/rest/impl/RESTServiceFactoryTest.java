@@ -1,4 +1,5 @@
 package fr.mailjet.rest.impl;
+
 /*
  * 
  * Mailjet-REST
@@ -19,7 +20,8 @@ package fr.mailjet.rest.impl;
  * #L%
  */
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 
@@ -30,7 +32,6 @@ public class RESTServiceFactoryTest {
 	static private final String API_KEY = "test";
 	static private final String SECRET_KEY = "test";
 
-	@SuppressWarnings("unused")
 	@Test(timeout = 3000L, expected = IllegalArgumentException.class)
 	public void testRESTServiceFactoryMailjetContext() {
 		// Have to throw an exception

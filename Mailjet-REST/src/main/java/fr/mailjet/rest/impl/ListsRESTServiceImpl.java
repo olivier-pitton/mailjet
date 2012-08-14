@@ -43,69 +43,86 @@ import fr.mailjet.rest.parameters.EnumReturnType;
 public class ListsRESTServiceImpl extends AbstractRESTService implements ListsRESTService {
 	/**
 	 * Paramètre identifiant global à cette API
+	 * 
 	 * @see ListsRESTService#contacts(EnumReturnType, Integer)
 	 * @see ListsRESTService#email(EnumReturnType, Integer)
 	 * @see ListsRESTService#statistics(EnumReturnType, Integer)
 	 */
 	static final private String _ListId = "id";
 	/**
-	 * Paramètre order_by de la méthode all
-	 *<br /><a  href="https://fr.mailjet.com/docs/api/lists/all">Documentation Mailjet</a>
+	 * Paramètre order_by de la méthode all <br />
+	 * <a href="https://fr.mailjet.com/docs/api/lists/all">Documentation
+	 * Mailjet</a>
+	 * 
 	 * @see ListsRESTService#all(EnumReturnType, Integer, String)
 	 */
 	static final private String _AllOrderBy = "order_by";
 	/**
-	 * Paramètre limit de la méthode all
-	 *<br /><a  href="https://fr.mailjet.com/docs/api/lists/all">Documentation Mailjet</a>
+	 * Paramètre limit de la méthode all <br />
+	 * <a href="https://fr.mailjet.com/docs/api/lists/all">Documentation
+	 * Mailjet</a>
+	 * 
 	 * @see ListsRESTService#all(EnumReturnType, Integer)
 	 */
 	static final private String _AllLimit = "limit";
-	
+
 	/**
-	 * Paramètre start de la méthode all
-	 * <br /><a  href="https://fr.mailjet.com/docs/api/lists/all">Documentation Mailjet</a>
+	 * Paramètre start de la méthode all <br />
+	 * <a href="https://fr.mailjet.com/docs/api/lists/all">Documentation
+	 * Mailjet</a>
+	 * 
 	 * @see ListsRESTService#all(EnumReturnType, Integer, String, Integer)
 	 */
 	static final private String _AllStart = "start";
-	
+
 	/**
-	 * Paramètre contact 
-	 * <br /><a href="https://fr.mailjet.com/docs/api/lists/addcontact">Documentation Mailjet</a>
+	 * Paramètre contact <br />
+	 * <a href="https://fr.mailjet.com/docs/api/lists/addcontact">Documentation
+	 * Mailjet</a>
+	 * 
 	 * @see #addContact(EnumReturnType, Integer, String)
 	 * @see #addContact(EnumReturnType, Integer, String, Boolean)
 	 */
 	static final private String _contact = "contact";
 
 	/**
-	 * Paramètre contacts 
-	 * <br /><a href="https://fr.mailjet.com/docs/api/lists/addmanycontacts">Documentation Mailjet</a>
+	 * Paramètre contacts <br />
+	 * <a href="https://fr.mailjet.com/docs/api/lists/addmanycontacts">
+	 * Documentation Mailjet</a>
+	 * 
 	 * @see #addManyContacts(EnumReturnType, Integer, List)
 	 * @see #addManyContacts(EnumReturnType, Integer, List, Boolean)
 	 */
 	static final private String _contacts = "contacts";
 
 	/**
-	 * Paramètre force
-	 * <br /><a href="https://fr.mailjet.com/docs/api/lists/addmanycontacts">AddManyContacts</a>
-	 * <br /><a href="https://fr.mailjet.com/docs/api/lists/addcontact">AddContact</a>
+	 * Paramètre force <br />
+	 * <a href="https://fr.mailjet.com/docs/api/lists/addmanycontacts">
+	 * AddManyContacts</a> <br />
+	 * <a href="https://fr.mailjet.com/docs/api/lists/addcontact">AddContact</a>
+	 * 
 	 * @see #addContact(EnumReturnType, Integer, String, Boolean)
 	 * @see #addManyContacts(EnumReturnType, Integer, List, Boolean)
 	 */
 	static final private String _force = "force";
-	
+
 	/**
-	 * Paramètre "name"
-	 * <br /><a href="https://fr.mailjet.com/docs/api/lists/create">Documentation Mailjet</a>
+	 * Paramètre "name" <br />
+	 * <a href="https://fr.mailjet.com/docs/api/lists/create">Documentation
+	 * Mailjet</a>
+	 * 
 	 * @see #create(EnumReturnType, String, String)
 	 */
 	static final private String _name = "name";
-	
+
 	/**
-	 * Paramètre "label"
-	 * <br /><a href="https://fr.mailjet.com/docs/api/lists/create">Documentation Mailjet</a>
+	 * Paramètre "label" <br />
+	 * <a href="https://fr.mailjet.com/docs/api/lists/create">Documentation
+	 * Mailjet</a>
+	 * 
 	 * @see #create(EnumReturnType, String, String)
 	 */
-	static final private String _label = "label";	
+	static final private String _label = "label";
 
 	/**
 	 * Constructeur
@@ -121,22 +138,22 @@ public class ListsRESTServiceImpl extends AbstractRESTService implements ListsRE
 
 	@Override
 	public String all(EnumReturnType parType) throws UniformInterfaceException {
-		return all(parType, null);
+		return this.all(parType, null);
 	}
 
 	@Override
 	public String all(EnumReturnType parType, Integer parLimit) throws UniformInterfaceException {
-		return all(parType, parLimit, null);
+		return this.all(parType, parLimit, null);
 	}
 
 	@Override
 	public String all(EnumReturnType parType, Integer parLimit, String parOrderBy) throws UniformInterfaceException {
-		return all(parType, parLimit, parOrderBy, null);
+		return this.all(parType, parLimit, parOrderBy, null);
 	}
 
 	@Override
 	public String all(EnumReturnType parType, Integer parLimit, String parOrderBy, Integer parStart) throws UniformInterfaceException {
-		MultivaluedMap<String, String> locParameters = createHTTPProperties(parType);
+		MultivaluedMap<String, String> locParameters = this.createHTTPProperties(parType);
 		if (parLimit != null) {
 			locParameters.putSingle(_AllLimit, parLimit.toString());
 		}
@@ -146,50 +163,49 @@ public class ListsRESTServiceImpl extends AbstractRESTService implements ListsRE
 		if (parStart != null) {
 			locParameters.putSingle(_AllStart, parStart.toString());
 		}
-		return createGETRequest("listsAll", locParameters);
+		return this.createGETRequest("listsAll", locParameters);
 	}
 
 	@Override
 	public String contacts(EnumReturnType parType, Integer parListId) throws UniformInterfaceException, IllegalArgumentException {
-		return contacts(parType, parListId, null);
+		return this.contacts(parType, parListId, null);
 	}
 
 	@Override
 	public String contacts(EnumReturnType parType, Integer parListId, Map<String, String> parParameters) throws UniformInterfaceException, IllegalArgumentException {
-		if (parListId == null) {
+		if (parListId == null)
 			throw new IllegalArgumentException();
-		}
-		MultivaluedMap<String, String> locParameters = createHTTPProperties(parType);
+		MultivaluedMap<String, String> locParameters = this.createHTTPProperties(parType);
 		locParameters.putSingle(_ListId, parListId.toString());
 		if (parParameters != null) {
 			for (Map.Entry<String, String> locEntry : parParameters.entrySet()) {
 				locParameters.putSingle(locEntry.getKey(), locEntry.getValue());
 			}
 		}
-		return createGETRequest("listsContacts", locParameters);
+		return this.createGETRequest("listsContacts", locParameters);
 	}
 
 	@Override
 	public String email(EnumReturnType parType, Integer parContactId) throws UniformInterfaceException, IllegalArgumentException {
 		if (parContactId == null)
 			throw new IllegalArgumentException();
-		MultivaluedMap<String, String> locParameters = createHTTPProperties(parType);
+		MultivaluedMap<String, String> locParameters = this.createHTTPProperties(parType);
 		locParameters.putSingle(_ListId, parContactId.toString());
-		return createGETRequest("listsEmail", locParameters);
+		return this.createGETRequest("listsEmail", locParameters);
 	}
 
 	@Override
 	public String statistics(EnumReturnType parType, Integer parListId) throws UniformInterfaceException, IllegalArgumentException {
 		if (parListId == null)
 			throw new IllegalArgumentException();
-		MultivaluedMap<String, String> locParameters = createHTTPProperties(parType);
+		MultivaluedMap<String, String> locParameters = this.createHTTPProperties(parType);
 		locParameters.putSingle(_ListId, parListId.toString());
-		return createGETRequest("listsStatistics", locParameters);
+		return this.createGETRequest("listsStatistics", locParameters);
 	}
 
 	@Override
 	public String addContact(EnumReturnType parType, Integer parListId, String parEmail) throws UniformInterfaceException, IllegalArgumentException {
-		return addContact(parType, parListId, parEmail, null);
+		return this.addContact(parType, parListId, parEmail, null);
 	}
 
 	@Override
@@ -197,18 +213,18 @@ public class ListsRESTServiceImpl extends AbstractRESTService implements ListsRE
 		if (parListId == null || StringUtils.isEmpty(parEmail))
 			throw new IllegalArgumentException();
 
-		MultivaluedMap<String, String> locParameters = createHTTPProperties(parType);
+		MultivaluedMap<String, String> locParameters = this.createHTTPProperties(parType);
 		locParameters.putSingle(_ListId, parListId.toString());
 		locParameters.putSingle(_contact, parEmail);
 		if (parForce != null) {
 			locParameters.putSingle(_force, parForce.toString());
 		}
-		return createPOSTRequest("listsAddcontact", locParameters);
+		return this.createPOSTRequest("listsAddcontact", locParameters);
 	}
 
 	@Override
 	public String addManyContacts(EnumReturnType parType, Integer parListId, List<String> parContacts) throws UniformInterfaceException, IllegalArgumentException {
-		return addManyContacts(parType, parListId, parContacts, null);
+		return this.addManyContacts(parType, parListId, parContacts, null);
 	}
 
 	@Override
@@ -216,13 +232,13 @@ public class ListsRESTServiceImpl extends AbstractRESTService implements ListsRE
 		if (parListId == null || parContacts == null || parContacts.isEmpty())
 			throw new IllegalArgumentException();
 
-		MultivaluedMap<String, String> locParameters = createHTTPProperties(parType);
+		MultivaluedMap<String, String> locParameters = this.createHTTPProperties(parType);
 		locParameters.putSingle(_ListId, parListId.toString());
-		locParameters.putSingle(_contacts, toString(parContacts));
+		locParameters.putSingle(_contacts, this.toString(parContacts));
 		if (parForce != null) {
 			locParameters.putSingle(_force, parForce.toString());
 		}
-		return createPOSTRequest("listsAddmanycontacts", locParameters);
+		return this.createPOSTRequest("listsAddmanycontacts", locParameters);
 	}
 
 	@Override
@@ -230,10 +246,10 @@ public class ListsRESTServiceImpl extends AbstractRESTService implements ListsRE
 		if (StringUtils.isEmpty(parName) || StringUtils.isEmpty(parLabel))
 			throw new IllegalArgumentException();
 
-		MultivaluedMap<String, String> locParameters = createHTTPProperties(parType);
+		MultivaluedMap<String, String> locParameters = this.createHTTPProperties(parType);
 		locParameters.putSingle(_label, parLabel);
 		locParameters.putSingle(_name, parName);
-		return createPOSTRequest("listsCreate", locParameters);
+		return this.createPOSTRequest("listsCreate", locParameters);
 	}
 
 	@Override
@@ -241,9 +257,9 @@ public class ListsRESTServiceImpl extends AbstractRESTService implements ListsRE
 		if (parListId == null)
 			throw new IllegalArgumentException();
 
-		MultivaluedMap<String, String> locParameters = createHTTPProperties(parType);
+		MultivaluedMap<String, String> locParameters = this.createHTTPProperties(parType);
 		locParameters.putSingle(_ListId, parListId.toString());
-		return createPOSTRequest("listsDelete", locParameters);
+		return this.createPOSTRequest("listsDelete", locParameters);
 	}
 
 	@Override
@@ -251,10 +267,10 @@ public class ListsRESTServiceImpl extends AbstractRESTService implements ListsRE
 		if (parListId == null || StringUtils.isEmpty(parContact))
 			throw new IllegalArgumentException();
 
-		MultivaluedMap<String, String> locParameters = createHTTPProperties(parType);
+		MultivaluedMap<String, String> locParameters = this.createHTTPProperties(parType);
 		locParameters.putSingle(_ListId, parListId.toString());
 		locParameters.putSingle(_contact, parContact);
-		return createPOSTRequest("listsRemovecontact", locParameters);
+		return this.createPOSTRequest("listsRemovecontact", locParameters);
 	}
 
 	@Override
@@ -262,10 +278,10 @@ public class ListsRESTServiceImpl extends AbstractRESTService implements ListsRE
 		if (parListId == null || parContacts == null || parContacts.isEmpty())
 			throw new IllegalArgumentException();
 
-		MultivaluedMap<String, String> locParameters = createHTTPProperties(parType);
+		MultivaluedMap<String, String> locParameters = this.createHTTPProperties(parType);
 		locParameters.putSingle(_ListId, parListId.toString());
-		locParameters.putSingle(_contacts, toString(parContacts));
-		return createPOSTRequest("listsRemovemanycontacts", locParameters);
+		locParameters.putSingle(_contacts, this.toString(parContacts));
+		return this.createPOSTRequest("listsRemovemanycontacts", locParameters);
 	}
 
 	@Override
@@ -273,15 +289,15 @@ public class ListsRESTServiceImpl extends AbstractRESTService implements ListsRE
 		if (parListId == null || StringUtils.isEmpty(parContact))
 			throw new IllegalArgumentException();
 
-		MultivaluedMap<String, String> locParameters = createHTTPProperties(parType);
+		MultivaluedMap<String, String> locParameters = this.createHTTPProperties(parType);
 		locParameters.putSingle(_ListId, parListId.toString());
 		locParameters.putSingle(_contact, parContact);
-		return createPOSTRequest("listsUnsubcontact", locParameters);
+		return this.createPOSTRequest("listsUnsubcontact", locParameters);
 	}
 
 	@Override
 	public String update(EnumReturnType parType, Integer parListId, String parLabel) throws UniformInterfaceException, IllegalArgumentException {
-		return update(parType, parListId, parLabel, null);
+		return this.update(parType, parListId, parLabel, null);
 	}
 
 	@Override
@@ -289,14 +305,16 @@ public class ListsRESTServiceImpl extends AbstractRESTService implements ListsRE
 		if (parListId == null)
 			throw new IllegalArgumentException();
 
-		MultivaluedMap<String, String> locParameters = createHTTPProperties(parType);
+		MultivaluedMap<String, String> locParameters = this.createHTTPProperties(parType);
 		locParameters.putSingle(_ListId, parListId.toString());
-		if (StringUtils.isEmpty(parName) == false)
+		if (StringUtils.isEmpty(parName) == false) {
 			locParameters.putSingle(_name, parName);
-		if (StringUtils.isEmpty(parLabel) == false)
+		}
+		if (StringUtils.isEmpty(parLabel) == false) {
 			locParameters.putSingle(_label, parLabel);
-		
-		return createPOSTRequest("listsUpdate", locParameters);
+		}
+
+		return this.createPOSTRequest("listsUpdate", locParameters);
 	}
 
 	private String toString(List<String> parContacts) {

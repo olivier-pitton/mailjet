@@ -1,4 +1,5 @@
 package fr.mailjet;
+
 /*
  * 
  * Mailjet-REST
@@ -32,17 +33,11 @@ import fr.mailjet.rest.impl.UserRESTServiceTest;
 
 /**
  * Suite de tests
+ * 
  * @author Pitton Olivier
- *
+ * 
  */
 @RunWith(Suite.class)
-@SuiteClasses({ 
-	EnumTests.class, 
-	ApiRESTServiceTest.class, 
-	ContactRESTServiceTest.class, 
-	ListsRESTServiceTest.class, 
-	MessageRESTServiceTest.class, 
-	UserRESTServiceTest.class 
-})
+@SuiteClasses({ EnumTests.class, ApiRESTServiceTest.class, ContactRESTServiceTest.class, ListsRESTServiceTest.class, MessageRESTServiceTest.class, UserRESTServiceTest.class })
 public class AllTestsSuite {
 }

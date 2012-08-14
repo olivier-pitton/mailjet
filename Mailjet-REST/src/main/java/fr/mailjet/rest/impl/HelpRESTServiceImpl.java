@@ -1,4 +1,5 @@
 package fr.mailjet.rest.impl;
+
 /*
  * 
  * Mailjet-REST
@@ -32,37 +33,47 @@ import fr.mailjet.rest.parameters.EnumReturnType;
 
 /**
  * Une implémentation par défaut du service <i>Help</i>
+ * 
  * @author Pitton Olivier
- *
+ * 
  */
 public class HelpRESTServiceImpl extends AbstractRESTService implements HelpRESTService {
 
 	/**
-	 * Clé du paramètre "name"
-	 * <br /><a  href="https://fr.mailjet.com/docs/api/Help/method">Documentation Mailjet</a>
-	 * <br /><a  href="https://fr.mailjet.com/docs/api/Help/category">Documentation Mailjet</a>
+	 * Clé du paramètre "name" <br />
+	 * <a href="https://fr.mailjet.com/docs/api/Help/method">Documentation
+	 * Mailjet</a> <br />
+	 * <a href="https://fr.mailjet.com/docs/api/Help/category">Documentation
+	 * Mailjet</a>
+	 * 
 	 * @see #method(EnumReturnType, String)
 	 * @see #category(EnumReturnType, String)
 	 */
 	private final static String _name = "name";
 	/**
-	 * Clé du paramètre "category"
-	 * <br /><a  href="https://fr.mailjet.com/docs/api/Help/methods">Documentation Mailjet</a>
+	 * Clé du paramètre "category" <br />
+	 * <a href="https://fr.mailjet.com/docs/api/Help/methods">Documentation
+	 * Mailjet</a>
+	 * 
 	 * @see #methods(EnumReturnType, String)
 	 */
 	private final static String _category = "category";
 	/**
-	 * Clé du paramètre "code"
-	 * <br /><a  href="https://fr.mailjet.com/docs/api/Help/status">Documentation Mailjet</a>
+	 * Clé du paramètre "code" <br />
+	 * <a href="https://fr.mailjet.com/docs/api/Help/status">Documentation
+	 * Mailjet</a>
+	 * 
 	 * @see #status(EnumReturnType, Integer)
 	 */
 	private final static String _code = "code";
 
-
 	/**
 	 * Constructeur
-	 * @param parContext {@link MailjetContext} un contexte
-	 * @param parClient {@link Client} un client
+	 * 
+	 * @param parContext
+	 *          {@link MailjetContext} un contexte
+	 * @param parClient
+	 *          {@link Client} un client
 	 */
 	protected HelpRESTServiceImpl(MailjetContext parContext, Client parClient) {
 		super(parContext, parClient);
@@ -70,7 +81,7 @@ public class HelpRESTServiceImpl extends AbstractRESTService implements HelpREST
 
 	@Override
 	public String categories(EnumReturnType parType) throws UniformInterfaceException {
-		return createGETRequest(parType, "HelpCategories");
+		return this.createGETRequest(parType, "HelpCategories");
 	}
 
 	@Override
@@ -78,9 +89,9 @@ public class HelpRESTServiceImpl extends AbstractRESTService implements HelpREST
 		if (StringUtils.isEmpty(parName))
 			throw new IllegalArgumentException();
 
-		MultivaluedMap<String, String> locParameters = createHTTPProperties(parType);
+		MultivaluedMap<String, String> locParameters = this.createHTTPProperties(parType);
 		locParameters.putSingle(_name, parName);
-		return createGETRequest("HelpCategory", locParameters);
+		return this.createGETRequest("HelpCategory", locParameters);
 	}
 
 	@Override
@@ -88,9 +99,9 @@ public class HelpRESTServiceImpl extends AbstractRESTService implements HelpREST
 		if (StringUtils.isEmpty(parCategory))
 			throw new IllegalArgumentException();
 
-		MultivaluedMap<String, String> locParameters = createHTTPProperties(parType);
+		MultivaluedMap<String, String> locParameters = this.createHTTPProperties(parType);
 		locParameters.putSingle(_category, parCategory);
-		return createGETRequest("HelpMethods", locParameters);
+		return this.createGETRequest("HelpMethods", locParameters);
 	}
 
 	@Override
@@ -98,22 +109,23 @@ public class HelpRESTServiceImpl extends AbstractRESTService implements HelpREST
 		if (StringUtils.isEmpty(parName))
 			throw new IllegalArgumentException();
 
-		MultivaluedMap<String, String> locParameters = createHTTPProperties(parType);
+		MultivaluedMap<String, String> locParameters = this.createHTTPProperties(parType);
 		locParameters.putSingle(_name, parName);
-		return createGETRequest("HelpMethod", locParameters);
+		return this.createGETRequest("HelpMethod", locParameters);
 	}
 
 	@Override
 	public String status(EnumReturnType parType) throws UniformInterfaceException {
-		return status(parType, null);
+		return this.status(parType, null);
 	}
 
 	@Override
 	public String status(EnumReturnType parType, Integer parStatus) throws UniformInterfaceException {
-		MultivaluedMap<String, String> locParameters = createHTTPProperties(parType);
-		if (parStatus != null)
+		MultivaluedMap<String, String> locParameters = this.createHTTPProperties(parType);
+		if (parStatus != null) {
 			locParameters.putSingle(_code, parStatus.toString());
-		return createGETRequest("HelpStatus", locParameters);
+		}
+		return this.createGETRequest("HelpStatus", locParameters);
 	}
 
 }

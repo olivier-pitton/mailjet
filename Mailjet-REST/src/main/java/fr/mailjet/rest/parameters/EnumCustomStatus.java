@@ -1,4 +1,5 @@
 package fr.mailjet.rest.parameters;
+
 /*
  * 
  * Mailjet
@@ -23,13 +24,15 @@ import fr.mailjet.rest.ApiRESTService;
 import fr.mailjet.util.IWithConstName;
 
 /**
- * Enumération de tous les types de status proposés par l'API mailjet
- * dans le cadre de la méthode {@link ApiRESTService#keyList(EnumReturnType, Boolean, EnumCustomStatus)}
+ * Enumération de tous les types de status proposés par l'API mailjet dans le
+ * cadre de la méthode
+ * {@link ApiRESTService#keyList(EnumReturnType, Boolean, EnumCustomStatus)}
+ * 
  * @see ApiRESTService#keyList(EnumReturnType, Boolean, EnumCustomStatus)
  * @see ApiRESTService#keyUpdate(EnumReturnType, String, EnumCustomStatus)
  * @see ApiRESTService#keyAdd(EnumReturnType, String, EnumCustomStatus)
  * @author Pitton Olivier
- *
+ * 
  */
 public enum EnumCustomStatus implements IWithConstName {
 	/**
@@ -48,15 +51,15 @@ public enum EnumCustomStatus implements IWithConstName {
 	private String _name;
 
 	private EnumCustomStatus(String parName) {
-		_name = parName;
+		this._name = parName;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
 	public String getConstName() {
-		return _name;
+		return this._name;
 	}
 
 	/**
@@ -64,6 +67,6 @@ public enum EnumCustomStatus implements IWithConstName {
 	 */
 	@Override
 	public String toString() {
-		return _name;
+		return this._name;
 	}
 }

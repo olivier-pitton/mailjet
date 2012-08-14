@@ -20,7 +20,8 @@ package fr.mailjet.rest.impl;
  * #L%
  */
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 import org.junit.AfterClass;
 import org.junit.Test;
@@ -43,84 +44,84 @@ public class HelpRESTServiceTest extends AbstractServiceTestBase {
 	public HelpRESTServiceTest(EnumReturnType parType) {
 		super(parType);
 
-		_service = new RESTServiceFactory(_context).createHelpService();
+		_service = new RESTServiceFactory(this._context).createHelpService();
 	}
 
 	@Test(timeout = 1000L)
 	public void testGetContext() {
-		assertEquals(_context, _service.getContext());
+		assertEquals(this._context, _service.getContext());
 	}
 
 	@Test(timeout = 1000L)
 	public void testSetContext() {
 		_service.setContext(new MailjetContext("test", "test"));
-		assertFalse(_service.getContext().equals(_context));
-		_service.setContext(_context);
+		assertFalse(_service.getContext().equals(this._context));
+		_service.setContext(this._context);
 	}
 
 	@Test(timeout = 10000L)
 	public void testCategories() {
-		String locResult = _service.categories(_type);
-		checkStatus(locResult);
-		checkParameter(locResult, "name", "api");
-		checkParameter(locResult, "name", "message");
-		checkParameter(locResult, "name", "contact");
-		checkParameter(locResult, "name", "user");
-		checkParameter(locResult, "name", "report");
-		checkParameter(locResult, "name", "lists");
-		checkParameter(locResult, "name", "Help");
+		String locResult = _service.categories(this._type);
+		this.checkStatus(locResult);
+		this.checkParameter(locResult, "name", "api");
+		this.checkParameter(locResult, "name", "message");
+		this.checkParameter(locResult, "name", "contact");
+		this.checkParameter(locResult, "name", "user");
+		this.checkParameter(locResult, "name", "report");
+		this.checkParameter(locResult, "name", "lists");
+		this.checkParameter(locResult, "name", "Help");
 	}
 
 	@Test(timeout = 10000L)
 	public void testCategory() {
-		String locResult = _service.category(_type, "report");
-		checkStatus(locResult);
-		checkParameter(locResult, "name", "Click");
-		checkParameter(locResult, "name", "EmailStatistics");
-		checkParameter(locResult, "name", "Domain");
+		String locResult = _service.category(this._type, "report");
+		this.checkStatus(locResult);
+		this.checkParameter(locResult, "name", "Click");
+		this.checkParameter(locResult, "name", "EmailStatistics");
+		this.checkParameter(locResult, "name", "Domain");
 	}
 
 	@Test(timeout = 2000L, expected = IllegalArgumentException.class)
 	public void testCategoryError() {
-		_service.category(_type, "");
+		_service.category(this._type, "");
 	}
 
 	@Test(timeout = 10000L)
 	public void testMethods() {
-		String locResult = _service.methods(_type, "report");
-		checkStatus(locResult);
-		checkParameter(locResult, "name", "EmailInfos");
-		checkParameter(locResult, "name", "Domain");
-		checkParameter(locResult, "name", "Click");
+		String locResult = _service.methods(this._type, "report");
+		this.checkStatus(locResult);
+		this.checkParameter(locResult, "name", "EmailInfos");
+		this.checkParameter(locResult, "name", "Domain");
+		this.checkParameter(locResult, "name", "Click");
 	}
 
 	@Test(timeout = 2000L, expected = IllegalArgumentException.class)
 	public void testMethodsError() {
-		_service.methods(_type, "");
+		_service.methods(this._type, "");
 	}
 
 	@Test(timeout = 10000L)
 	public void testMethod() {
-		String locResult = _service.method(_type, "HelpMethod");
-		checkStatus(locResult);
-		checkParameter(locResult, "category", "Help");
-		checkParameter(locResult, "request_type", "get");
+		String locResult = _service.method(this._type, "HelpMethod");
+		this.checkStatus(locResult);
+		this.checkParameter(locResult, "category", "Help");
+		this.checkParameter(locResult, "request_type", "get");
 	}
 
 	@Test(timeout = 2000L, expected = IllegalArgumentException.class)
 	public void testMethodError() {
-		_service.method(_type, "");
+		_service.method(this._type, "");
 	}
 
 	@Test(timeout = 10000L)
 	public void testStatusEnumReturnType() {
-		String locResult = _service.status(_type);
-		checkParameter(locResult, "code", "204");
+		String locResult = _service.status(this._type);
+		this.checkParameter(locResult, "code", "204");
 	}
 
 	@Test(timeout = 10000L)
 	public void testStatusEnumReturnTypeInteger() {
-		String locResult = _service.status(_type, 204);
-		checkParameter(locResult, "code", "204");
+		String locResult = _service.status(this._type, 204);
+		this.checkParameter(locResult, "code", "204");
 	}
 }

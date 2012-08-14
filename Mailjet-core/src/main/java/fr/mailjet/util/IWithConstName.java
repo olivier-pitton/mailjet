@@ -1,4 +1,5 @@
 package fr.mailjet.util;
+
 /*
  * 
  * Mailjet
@@ -20,17 +21,19 @@ package fr.mailjet.util;
  */
 
 /**
- * L'interface de tous les types capables de renvoyer une valeur constante sous forme de chaines de caractères.
+ * L'interface de tous les types capables de renvoyer une valeur constante sous
+ * forme de chaines de caractères.
+ * 
  * @author Pitton Olivier
- *
+ * 
  */
 public interface IWithConstName {
 
 	/**
-	 * Retourne la valeur associée à l'interface. Cette valeur est
-	 * constante.
+	 * Retourne la valeur associée à l'interface. Cette valeur est constante.
+	 * 
 	 * @return {@link String} la valeur.
 	 */
 	String getConstName();
-	
+
 }

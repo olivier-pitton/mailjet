@@ -1,4 +1,5 @@
 package fr.mailjet.rest.impl;
+
 /*
  * 
  * Mailjet-REST
@@ -52,26 +53,26 @@ public class ReportRESTServiceTest extends AbstractServiceTestBase {
 
 	public ReportRESTServiceTest(EnumReturnType parType) {
 		super(parType);
-		_service = new RESTServiceFactory(_context).createReportService();
+		_service = new RESTServiceFactory(this._context).createReportService();
 	}
 
 	@Test(timeout = 1000L)
 	public void testGetContext() {
-		assertEquals(_context, _service.getContext());
+		assertEquals(this._context, _service.getContext());
 	}
 
 	@Test(timeout = 1000L)
 	public void testSetContext() {
 		_service.setContext(new MailjetContext("test", "test"));
-		assertFalse(_service.getContext().equals(_context));
-		_service.setContext(_context);
+		assertFalse(_service.getContext().equals(this._context));
+		_service.setContext(this._context);
 	}
-	
+
 	@Test(timeout = 30000L)
 	public void testClickEnumReturnType() {
-		final String locResult = _service.click(_type);
-		checkStatus(locResult);
-		checkMinimumIntegerParameter(locResult, "cnt", 1);
+		final String locResult = _service.click(this._type);
+		this.checkStatus(locResult);
+		this.checkMinimumIntegerParameter(locResult, "cnt", 1);
 	}
 
 	@Test(timeout = 30000L)
@@ -80,16 +81,16 @@ public class ReportRESTServiceTest extends AbstractServiceTestBase {
 		locParameters.put("limit", "1");
 		locParameters.put("start", "0");
 		locParameters.put("order_by", "by_email");
-		locParameters.put("from", MAIL);
-		final String locResult = _service.click(_type, locParameters);
-		checkStatus(locResult);
-		checkMinimumIntegerParameter(locResult, "cnt", 1);
+		locParameters.put("from", this.MAIL);
+		final String locResult = _service.click(this._type, locParameters);
+		this.checkStatus(locResult);
+		this.checkMinimumIntegerParameter(locResult, "cnt", 1);
 	}
 
 	@Test(timeout = 30000L)
 	public void testDomainEnumReturnType() {
-		final String locResult = _service.domain(_type);
-		checkStatus(locResult);
+		final String locResult = _service.domain(this._type);
+		this.checkStatus(locResult);
 	}
 
 	@Test(timeout = 30000L)
@@ -97,16 +98,16 @@ public class ReportRESTServiceTest extends AbstractServiceTestBase {
 		Map<String, String> locParameters = new HashMap<String, String>();
 		locParameters.put("limit", "1");
 		locParameters.put("start", "0");
-		locParameters.put("from", MAIL);
-		final String locResult = _service.domain(_type, locParameters);
-		checkStatus(locResult);
-		checkMinimumIntegerParameter(locResult, "cnt", 1, false);
+		locParameters.put("from", this.MAIL);
+		final String locResult = _service.domain(this._type, locParameters);
+		this.checkStatus(locResult);
+		this.checkMinimumIntegerParameter(locResult, "cnt", 1, false);
 	}
 
 	@Test(timeout = 30000L)
 	public void testEmailBounceEnumReturnType() {
-		final String locResult = _service.emailBounce(_type);
-		checkStatus(locResult);
+		final String locResult = _service.emailBounce(this._type);
+		this.checkStatus(locResult);
 	}
 
 	@Test(timeout = 30000L)
@@ -114,16 +115,16 @@ public class ReportRESTServiceTest extends AbstractServiceTestBase {
 		Map<String, String> locParameters = new HashMap<String, String>();
 		locParameters.put("limit", "1");
 		locParameters.put("start", "0");
-		locParameters.put("from", MAIL);
-		final String locResult = _service.emailBounce(_type, locParameters);
-		checkStatus(locResult);
-		checkMinimumIntegerParameter(locResult, "cnt", 0, false);
+		locParameters.put("from", this.MAIL);
+		final String locResult = _service.emailBounce(this._type, locParameters);
+		this.checkStatus(locResult);
+		this.checkMinimumIntegerParameter(locResult, "cnt", 0, false);
 	}
 
 	@Test(timeout = 30000L)
 	public void testEmailClientsEnumReturnType() {
-		final String locResult = _service.emailClients(_type);
-		checkStatus(locResult);
+		final String locResult = _service.emailClients(this._type);
+		this.checkStatus(locResult);
 	}
 
 	@Test(timeout = 30000L)
@@ -131,23 +132,23 @@ public class ReportRESTServiceTest extends AbstractServiceTestBase {
 		Map<String, String> locParameters = new HashMap<String, String>();
 		locParameters.put("limit", "1");
 		locParameters.put("start", "0");
-		locParameters.put("from", MAIL);
-		final String locResult = _service.emailClients(_type, locParameters);
-		checkStatus(locResult);
-		checkMinimumIntegerParameter(locResult, "cnt", 1);
+		locParameters.put("from", this.MAIL);
+		final String locResult = _service.emailClients(this._type, locParameters);
+		this.checkStatus(locResult);
+		this.checkMinimumIntegerParameter(locResult, "cnt", 1);
 
 	}
 
 	@Test(timeout = 30000L)
 	public void testEmailInfos() {
-		final String locResult = _service.emailInfos(_type, STATS_CAMPAIGN_ID);
-		checkStatus(locResult);
+		final String locResult = _service.emailInfos(this._type, this.STATS_CAMPAIGN_ID);
+		this.checkStatus(locResult);
 	}
 
 	@Test(timeout = 30000L)
 	public void testEmailSentEnumReturnType() {
-		final String locResult = _service.emailSent(_type);
-		checkStatus(locResult);
+		final String locResult = _service.emailSent(this._type);
+		this.checkStatus(locResult);
 	}
 
 	@Test(timeout = 30000L)
@@ -155,17 +156,17 @@ public class ReportRESTServiceTest extends AbstractServiceTestBase {
 		Map<String, String> locParameters = new HashMap<String, String>();
 		locParameters.put("limit", "1");
 		locParameters.put("start", "0");
-		locParameters.put("from", MAIL);
-		final String locResult = _service.emailSent(_type, locParameters);
-		checkStatus(locResult);
-		checkMinimumIntegerParameter(locResult, "cnt", 1);
+		locParameters.put("from", this.MAIL);
+		final String locResult = _service.emailSent(this._type, locParameters);
+		this.checkStatus(locResult);
+		this.checkMinimumIntegerParameter(locResult, "cnt", 1);
 
 	}
 
 	@Test(timeout = 30000L)
 	public void testEmailStatisticsEnumReturnType() {
-		final String locResult = _service.emailStatistics(_type);
-		checkStatus(locResult);
+		final String locResult = _service.emailStatistics(this._type);
+		this.checkStatus(locResult);
 	}
 
 	@Test(timeout = 30000L)
@@ -173,15 +174,15 @@ public class ReportRESTServiceTest extends AbstractServiceTestBase {
 		Map<String, String> locParameters = new HashMap<String, String>();
 		locParameters.put("limit", "1");
 		locParameters.put("start", "0");
-		locParameters.put("from", MAIL);
-		final String locResult = _service.emailStatistics(_type, locParameters);
-		checkStatus(locResult);
+		locParameters.put("from", this.MAIL);
+		final String locResult = _service.emailStatistics(this._type, locParameters);
+		this.checkStatus(locResult);
 	}
 
 	@Test(timeout = 30000L)
 	public void testGeoIpEnumReturnType() {
-		final String locResult = _service.geoIp(_type);
-		checkStatus(locResult);
+		final String locResult = _service.geoIp(this._type);
+		this.checkStatus(locResult);
 	}
 
 	@Test(timeout = 30000L)
@@ -189,15 +190,15 @@ public class ReportRESTServiceTest extends AbstractServiceTestBase {
 		Map<String, String> locParameters = new HashMap<String, String>();
 		locParameters.put("limit", "1");
 		locParameters.put("start", "0");
-		locParameters.put("from", MAIL);
-		final String locResult = _service.geoIp(_type, locParameters);
-		checkStatus(locResult);
+		locParameters.put("from", this.MAIL);
+		final String locResult = _service.geoIp(this._type, locParameters);
+		this.checkStatus(locResult);
 	}
 
 	@Test(timeout = 30000L)
 	public void testOpenEnumReturnType() {
-		final String locResult = _service.open(_type);
-		checkStatus(locResult);
+		final String locResult = _service.open(this._type);
+		this.checkStatus(locResult);
 	}
 
 	@Test(timeout = 30000L)
@@ -205,16 +206,16 @@ public class ReportRESTServiceTest extends AbstractServiceTestBase {
 		Map<String, String> locParameters = new HashMap<String, String>();
 		locParameters.put("limit", "1");
 		locParameters.put("start", "0");
-		locParameters.put("from", MAIL);
-		final String locResult = _service.open(_type, locParameters);
-		checkStatus(locResult);
-		checkMinimumIntegerParameter(locResult, "cnt", 1);
+		locParameters.put("from", this.MAIL);
+		final String locResult = _service.open(this._type, locParameters);
+		this.checkStatus(locResult);
+		this.checkMinimumIntegerParameter(locResult, "cnt", 1);
 	}
 
 	@Test(timeout = 30000L)
 	public void testOpenedStatisticsEnumReturnType() {
-		final String locResult = _service.openedStatistics(_type);
-		checkStatus(locResult);
+		final String locResult = _service.openedStatistics(this._type);
+		this.checkStatus(locResult);
 	}
 
 	@Test(timeout = 30000L)
@@ -222,15 +223,15 @@ public class ReportRESTServiceTest extends AbstractServiceTestBase {
 		Map<String, String> locParameters = new HashMap<String, String>();
 		locParameters.put("limit", "1");
 		locParameters.put("start", "0");
-		locParameters.put("from", MAIL);
-		final String locResult = _service.domain(_type, locParameters);
-		checkStatus(locResult);
+		locParameters.put("from", this.MAIL);
+		final String locResult = _service.domain(this._type, locParameters);
+		this.checkStatus(locResult);
 	}
 
 	@Test(timeout = 30000L)
 	public void testUserAgentsEnumReturnType() {
-		final String locResult = _service.userAgents(_type);
-		checkStatus(locResult);
+		final String locResult = _service.userAgents(this._type);
+		this.checkStatus(locResult);
 	}
 
 	@Test(timeout = 30000L)
@@ -238,9 +239,9 @@ public class ReportRESTServiceTest extends AbstractServiceTestBase {
 		Map<String, String> locParameters = new HashMap<String, String>();
 		locParameters.put("limit", "1");
 		locParameters.put("start", "0");
-		locParameters.put("from", MAIL);
-		final String locResult = _service.domain(_type, locParameters);
-		checkStatus(locResult);
-		checkMinimumIntegerParameter(locResult, "cnt", 1, false);
+		locParameters.put("from", this.MAIL);
+		final String locResult = _service.domain(this._type, locParameters);
+		this.checkStatus(locResult);
+		this.checkMinimumIntegerParameter(locResult, "cnt", 1, false);
 	}
 }

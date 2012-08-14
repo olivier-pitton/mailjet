@@ -1,4 +1,5 @@
 package fr.mailjet.mail;
+
 /*
  * 
  * Mailjet
@@ -22,45 +23,46 @@ package fr.mailjet.mail;
 import fr.mailjet.util.IWithConstName;
 
 /**
- * Enumération de tous les headers mail spécifiques à Mailjet
- * <a href="https://fr.mailjet.com/docs/emails_headers">headers</a>
+ * Enumération de tous les headers mail spécifiques à Mailjet <a
+ * href="https://fr.mailjet.com/docs/emails_headers">headers</a>
+ * 
  * @author Pitton Olivier
- *
+ * 
  */
 public enum EnumMailjetMailHeader implements IWithConstName {
 	/**
 	 * Ajoute un identifiant unique au mail par campagne afin de regrouper tous
 	 * les mails dans une même ligne
 	 */
-	CAMPAIGN("X-Mailjet-Campaign"), 
+	CAMPAIGN("X-Mailjet-Campaign"),
 	/**
 	 * Evite les doublons lors de l'envoi de mail. A utiliser avec
 	 * {@link EnumMailjetMailHeader#CAMPAIGN}
 	 */
 	DEDUPLICATE_CAMPAIGN("X-Mailjet-DeduplicateCampaign"),
 	/**
-	 * Indique si l'on veut activer le tracking. Outrepasse
-	 * les droits du compte utilisateur
+	 * Indique si l'on veut activer le tracking. Outrepasse les droits du compte
+	 * utilisateur
 	 */
 	TRACK_OPEN("X-Mailjet-TrackOpen"),
 	/**
-	 * Indique si l'on veut activer le tracking sur le clic 
-	 * des mails. Outrepasse les droits du compte utilisateur
+	 * Indique si l'on veut activer le tracking sur le clic des mails. Outrepasse
+	 * les droits du compte utilisateur
 	 */
 	TRACK_CLICK("X-Mailjet-TrackClick");
 
 	private String _name;
-	
+
 	private EnumMailjetMailHeader(String parName) {
-		_name = parName;
+		this._name = parName;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
 	public String getConstName() {
-		return _name;
+		return this._name;
 	}
 
 	/**
@@ -68,7 +70,7 @@ public enum EnumMailjetMailHeader implements IWithConstName {
 	 */
 	@Override
 	public String toString() {
-		return getConstName();
+		return this.getConstName();
 	}
 
 }

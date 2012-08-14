@@ -1,4 +1,5 @@
 package fr.mailjet.rest.impl;
+
 /*
  * 
  * Mailjet-REST
@@ -39,11 +40,11 @@ import fr.mailjet.rest.parameters.EnumReturnType;
 public class ReportRESTServiceImpl extends AbstractRESTService implements ReportRESTService {
 
 	/**
-	 * Clé du paramètre "campaign_id" 
+	 * Clé du paramètre "campaign_id"
+	 * 
 	 * @see #emailInfos(EnumReturnType, Integer)
 	 */
 	private static final String _campaignId = "campaign_id";
-	
 
 	protected ReportRESTServiceImpl(MailjetContext parContext, Client parClient) {
 		super(parContext, parClient);
@@ -51,42 +52,42 @@ public class ReportRESTServiceImpl extends AbstractRESTService implements Report
 
 	@Override
 	public String click(EnumReturnType parType) throws UniformInterfaceException {
-		return click(parType, null);
+		return this.click(parType, null);
 	}
 
 	@Override
 	public String click(EnumReturnType parType, Map<String, String> parParameters) throws UniformInterfaceException {
-		return createGETRequest("reportClick", fillParameters(parType, parParameters));
+		return this.createGETRequest("reportClick", this.fillParameters(parType, parParameters));
 	}
 
 	@Override
 	public String domain(EnumReturnType parType) throws UniformInterfaceException {
-		return domain(parType, null);
+		return this.domain(parType, null);
 	}
 
 	@Override
 	public String domain(EnumReturnType parType, Map<String, String> parParameters) throws UniformInterfaceException {
-		return createGETRequest("reportDomain", fillParameters(parType, parParameters));
+		return this.createGETRequest("reportDomain", this.fillParameters(parType, parParameters));
 	}
 
 	@Override
 	public String emailBounce(EnumReturnType parType) throws UniformInterfaceException {
-		return emailBounce(parType, null);
+		return this.emailBounce(parType, null);
 	}
 
 	@Override
 	public String emailBounce(EnumReturnType parType, Map<String, String> parParameters) throws UniformInterfaceException {
-		return createGETRequest("reportEmailbounce", fillParameters(parType, parParameters));
+		return this.createGETRequest("reportEmailbounce", this.fillParameters(parType, parParameters));
 	}
 
 	@Override
 	public String emailClients(EnumReturnType parType) throws UniformInterfaceException {
-		return emailClients(parType, null);
+		return this.emailClients(parType, null);
 	}
 
 	@Override
 	public String emailClients(EnumReturnType parType, Map<String, String> parParameters) throws UniformInterfaceException {
-		return createGETRequest("reportEmailclients", fillParameters(parType, parParameters));
+		return this.createGETRequest("reportEmailclients", this.fillParameters(parType, parParameters));
 	}
 
 	@Override
@@ -94,73 +95,73 @@ public class ReportRESTServiceImpl extends AbstractRESTService implements Report
 		if (parCampaignId == null)
 			throw new IllegalArgumentException();
 
-		MultivaluedMap<String, String> locParameters = createHTTPProperties(parType);
+		MultivaluedMap<String, String> locParameters = this.createHTTPProperties(parType);
 		locParameters.putSingle(_campaignId, parCampaignId.toString());
-		return createGETRequest("reportEmailinfos", locParameters);
+		return this.createGETRequest("reportEmailinfos", locParameters);
 	}
 
 	@Override
 	public String emailSent(EnumReturnType parType) throws UniformInterfaceException {
-		return emailSent(parType, null);
+		return this.emailSent(parType, null);
 	}
 
 	@Override
 	public String emailSent(EnumReturnType parType, Map<String, String> parParameters) throws UniformInterfaceException {
-		return createGETRequest("reportEmailsent", fillParameters(parType, parParameters));
+		return this.createGETRequest("reportEmailsent", this.fillParameters(parType, parParameters));
 	}
 
 	@Override
 	public String emailStatistics(EnumReturnType parType) throws UniformInterfaceException {
-		return emailStatistics(parType, null);
+		return this.emailStatistics(parType, null);
 	}
 
 	@Override
 	public String emailStatistics(EnumReturnType parType, Map<String, String> parParameters) throws UniformInterfaceException {
-		return createGETRequest("reportEmailstatistics", fillParameters(parType, parParameters));
+		return this.createGETRequest("reportEmailstatistics", this.fillParameters(parType, parParameters));
 	}
 
 	@Override
 	public String geoIp(EnumReturnType parType) throws UniformInterfaceException {
-		return geoIp(parType, null);
+		return this.geoIp(parType, null);
 	}
 
 	@Override
 	public String geoIp(EnumReturnType parType, Map<String, String> parParameters) throws UniformInterfaceException {
-		return createGETRequest("reportGeoip", fillParameters(parType, parParameters));
+		return this.createGETRequest("reportGeoip", this.fillParameters(parType, parParameters));
 	}
 
 	@Override
 	public String open(EnumReturnType parType) throws UniformInterfaceException {
-		return open(parType, null);
+		return this.open(parType, null);
 	}
 
 	@Override
 	public String open(EnumReturnType parType, Map<String, String> parParameters) throws UniformInterfaceException {
-		return createGETRequest("reportOpen", fillParameters(parType, parParameters));
+		return this.createGETRequest("reportOpen", this.fillParameters(parType, parParameters));
 	}
 
 	@Override
 	public String openedStatistics(EnumReturnType parType) throws UniformInterfaceException {
-		return openedStatistics(parType, null);
+		return this.openedStatistics(parType, null);
 	}
 
 	@Override
 	public String openedStatistics(EnumReturnType parType, Map<String, String> parParameters) throws UniformInterfaceException {
-		return createGETRequest("reportOpenedstatistics", fillParameters(parType, parParameters));
+		return this.createGETRequest("reportOpenedstatistics", this.fillParameters(parType, parParameters));
 	}
 
 	@Override
 	public String userAgents(EnumReturnType parType) throws UniformInterfaceException {
-		return userAgents(parType, null);
+		return this.userAgents(parType, null);
 	}
 
 	@Override
 	public String userAgents(EnumReturnType parType, Map<String, String> parParameters) throws UniformInterfaceException {
-		return createGETRequest("reportUseragents", fillParameters(parType, parParameters));
+		return this.createGETRequest("reportUseragents", this.fillParameters(parType, parParameters));
 	}
 
 	private MultivaluedMap<String, String> fillParameters(EnumReturnType parType, Map<String, String> parParameters) {
-		MultivaluedMap<String, String> locParameters = createHTTPProperties(parType);
+		MultivaluedMap<String, String> locParameters = this.createHTTPProperties(parType);
 		if (parParameters != null) {
 			for (Map.Entry<String, String> locEntry : parParameters.entrySet()) {
 				locParameters.putSingle(locEntry.getKey(), locEntry.getValue());
