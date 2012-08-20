@@ -3,20 +3,16 @@
 	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	id="WebApp_ID" version="3.0">
-	<display-name>Mailjet-event</display-name>
+	<display-name>Mailjet-event-servlet</display-name>
 	<!-- COPY THE CONTENT FROM HERE  -->
 	<servlet>
 		<servlet-name>Mailjet</servlet-name>
-		<servlet-class>org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher</servlet-class>
+		<servlet-class>fr.mailjet.servlet.MailjetServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Mailjet</servlet-name>
 		<url-pattern>/mailjet/*</url-pattern>
 	</servlet-mapping>
-	<context-param>
-		<param-name>javax.ws.rs.Application</param-name>
-		<param-value>fr.mailjet.webservice.MailjetApplication</param-value>
-	</context-param>
 	<!-- TO HERE  -->
 </web-app>
