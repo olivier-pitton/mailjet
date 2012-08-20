@@ -12,7 +12,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Mailjet</servlet-name>
-		<url-pattern>/mailjet/*</url-pattern>
+		<url-pattern>/mailjet</url-pattern>
 	</servlet-mapping>
 	<!-- TO HERE  -->
 </web-app>
