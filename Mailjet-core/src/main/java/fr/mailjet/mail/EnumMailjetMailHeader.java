@@ -49,7 +49,12 @@ public enum EnumMailjetMailHeader implements IWithConstName {
 	 * Indique si l'on veut activer le tracking sur le clic des mails. Outrepasse
 	 * les droits du compte utilisateur
 	 */
-	TRACK_CLICK("X-Mailjet-TrackClick");
+	TRACK_CLICK("X-Mailjet-TrackClick"),
+	/**
+	 * Indique la priorité du mail. La valeur associée à cette clé est 0 - 1 - 2 ou 3.<br />
+	 * Voir <a href="https://fr.mailjet.com/docs/email-priority-management">Documentation</a>
+	 */
+	PRIO("X-Mailjet-Prio");
 
 	private String _name;
 
