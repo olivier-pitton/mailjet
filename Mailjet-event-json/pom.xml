@@ -14,7 +14,7 @@
 	<url>https://fr.mailjet.com/</url>
 	<description>Mailjet JSON data bindings for Event API</description>
 	<properties>
-		<jackson.version>2.0.2</jackson.version>
+		<jackson.version>2.10.1</jackson.version>
 	</properties>
 	<dependencies>
 		<dependency>
